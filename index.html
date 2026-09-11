@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Special Invitation | Sammy & Sangtris</title>
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -45,6 +47,27 @@
             transform: scale(1.1);
         }
 
+        /* Audio Control Pill */
+        .audio-pill {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 100;
+            background: rgba(0, 41, 69, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(80, 165, 178, 0.4);
+            color: #50A5B2;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
         /* App Container */
         .container {
             width: 100%;
@@ -65,7 +88,6 @@
             position: relative;
         }
 
-        /* Hidden class for transitions */
         .hidden {
             display: none !important;
             opacity: 0;
@@ -96,13 +118,42 @@
             font-size: 0.8rem;
             font-weight: 700;
             border-radius: 20px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
 
+        /* Countdown Box */
+        .countdown-box {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            background: rgba(0, 41, 69, 0.4);
+            padding: 10px 14px;
+            border-radius: 16px;
+            border: 1px solid rgba(80, 165, 178, 0.2);
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #E28E1C;
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            color: #50A5B2;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
         .welcome-screen h1 {
-            font-size: 1.6rem;
+            font-size: 1.55rem;
             font-weight: 800;
             line-height: 1.35;
             color: #ffffff;
@@ -114,10 +165,10 @@
             color: #50A5B2;
             font-weight: 600;
             line-height: 1.5;
-            margin-bottom: 28px;
+            margin-bottom: 24px;
         }
 
-        /* Buttons */
+        /* Primary Button */
         .primary-btn {
             width: 100%;
             padding: 16px;
@@ -140,7 +191,7 @@
             transform: scale(0.98);
         }
 
-        /* Itinerary Screen */
+        /* Itinerary Screen Header */
         .header {
             text-align: center;
             padding-bottom: 16px;
@@ -165,7 +216,7 @@
         .timeline {
             position: relative;
             padding-left: 18px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             z-index: 10;
         }
 
@@ -234,28 +285,79 @@
             border: 1px solid rgba(80, 165, 178, 0.3);
         }
 
-        /* WhatsApp Button */
-        .whatsapp-btn {
-            width: 100%;
-            padding: 14px;
-            background: #25d366;
-            color: #000000;
-            border: none;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
+        /* Tap to Reveal Section */
+        .reveal-section {
+            margin-bottom: 20px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.2);
-            position: relative;
+            flex-direction: column;
+            gap: 10px;
             z-index: 10;
+            position: relative;
         }
 
-        /* Bouncing Emojis Animation */
+        .reveal-card {
+            background: rgba(0, 41, 69, 0.35);
+            border: 1px dashed rgba(80, 165, 178, 0.3);
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reveal-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #E28E1C;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reveal-content {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            margin-top: 8px;
+            display: none;
+            line-height: 1.4;
+        }
+
+        /* RSVP Buttons */
+        .rsvp-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .rsvp-btn {
+            flex: 1;
+            padding: 14px 10px;
+            border-radius: 14px;
+            border: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .rsvp-btn:active {
+            transform: scale(0.96);
+        }
+
+        .btn-in {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-wait {
+            background: linear-gradient(135deg, #AD691E 0%, #E28E1C 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 14px rgba(226, 142, 28, 0.25);
+        }
+
+        /* Floating Emojis */
         .floating-emoji {
             position: absolute;
             z-index: 1;
@@ -284,13 +386,37 @@
 </head>
 <body>
 
+    <!-- Background Layer -->
     <div class="bg-container"></div>
+
+    <!-- Audio Control Pill -->
+    <button class="audio-pill" onclick="toggleAudio()">
+        <span id="audio-icon">🎵</span> <span id="audio-text">Play Vibe</span>
+    </button>
+    <audio id="bg-music" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"></audio>
 
     <div class="container">
         
         <!-- SCREEN 1: Welcome Invitation -->
         <div id="welcome-screen" class="page welcome-screen fade-in">
             <span class="welcome-badge">Saturday, 12 Sept 2026</span>
+
+            <!-- Live Countdown Timer -->
+            <div class="countdown-box">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-mins">00</div>
+                    <div class="countdown-label">Mins</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-secs">00</div>
+                    <div class="countdown-label">Secs</div>
+                </div>
+            </div>
+
             <h1>A little market exploring, incredible food, and good conversation. 🍕 ✨</h1>
             <p>Here is everything lined up for us, Sammy!</p>
             <button class="primary-btn" onclick="openItinerary()">
@@ -341,14 +467,41 @@
 
             </div>
 
-            <a href="https://wa.me/27671908964?text=Hey!%20I%20just%20checked%20out%20the%20itinerary!%20" class="whatsapp-btn" target="_blank">
-                Ask Questions on WhatsApp 💬
-            </a>
+            <!-- Tap to Reveal Secret Teasers -->
+            <div class="reveal-section">
+                <div class="reveal-card" onclick="toggleReveal('dress-code')">
+                    <div class="reveal-title">
+                        <span>✨ Dress Code Hint</span>
+                        <span id="arrow-dress">▼</span>
+                    </div>
+                    <div class="reveal-content" id="dress-code">
+                        Casual, stylish, and comfortable for exploring market food stalls!
+                    </div>
+                </div>
+
+                <div class="reveal-card" onclick="toggleReveal('weather')">
+                    <div class="reveal-title">
+                        <span>☀️ Pretoria Weather Outlook</span>
+                        <span id="arrow-weather">▼</span>
+                    </div>
+                    <div class="reveal-content" id="weather">
+                        Clear skies and perfect afternoon sunshine lined up for Saturday.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSVP Action Buttons -->
+            <div class="rsvp-group">
+                <button class="rsvp-btn btn-in" onclick="rsvpAction('Count me in!')">Count Me In! 🥂</button>
+                <button class="rsvp-btn btn-wait" onclick="rsvpAction('Can\'t wait!')">Can't Wait! 🍕</button>
+            </div>
+
         </div>
 
     </div>
 
     <script>
+        // Transition Screen Logic
         function openItinerary() {
             const welcome = document.getElementById('welcome-screen');
             const itinerary = document.getElementById('itinerary-screen');
@@ -357,7 +510,69 @@
             itinerary.classList.remove('hidden');
             itinerary.classList.add('fade-in');
         }
+
+        // Live Countdown to Saturday 1:30 PM
+        function updateCountdown() {
+            const targetDate = new Date('September 12, 2026 13:30:00').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference > 0) {
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('cd-hours').innerText = '00';
+                document.getElementById('cd-mins').innerText = '00';
+                document.getElementById('cd-secs').innerText = '00';
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Tap-to-Reveal Logic
+        function toggleReveal(id) {
+            const content = document.getElementById(id);
+            const isHidden = content.style.display === '' || content.style.display === 'none';
+            content.style.display = isHidden ? 'block' : 'none';
+        }
+
+        // Audio Toggle
+        function toggleAudio() {
+            const audio = document.getElementById('bg-music');
+            const text = document.getElementById('audio-text');
+            const icon = document.getElementById('audio-icon');
+
+            if (audio.paused) {
+                audio.play();
+                text.innerText = 'Pause Vibe';
+                icon.innerText = '🔊';
+            } else {
+                audio.pause();
+                text.innerText = 'Play Vibe';
+                icon.innerText = '🎵';
+            }
+        }
+
+        // Confetti RSVP Action
+        function rsvpAction(response) {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            setTimeout(() => {
+                const text = encodeURIComponent(`Hey! ${response} I just checked out the itinerary for tomorrow! ✨`);
+                window.open(`https://wa.me/27671908964?text=${text}`, '_blank');
+            }, 800);
+        }
     </script>
 
 </body>
 </html>
+
