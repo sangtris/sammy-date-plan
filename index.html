@@ -1,9 +1,20 @@
+Here are a few more cool ideas tailored specifically to the plans you outlined:
+🌟 Additional Features for Entle’s Harties Trip
+ * Interactive "Road Trip Playlist" Teaser: A little card where she can tap to see the vibe or suggest songs for the 45-minute drive to Harties!
+ * Interactive "Game Night Vote": A quick poll card under Saturday night where she can select what you guys play first (e.g., Uno / Cards, Board Games, Trivia, or Movie First).
+ * Smooth "Time-Aware" Timeline Cards: Clean badges marking Shopping & Pickup, BnB Arrival & Takeout, Upside Down House, Little Paris, Dam Views & Swim, and Sunday Checkout.
+Here is the code for the web app. It features:
+ * Multi-day Tabs (Fri / Sat / Sun) with smooth switching.
+ * Countdown Timer targeting Friday 5:00 PM departure.
+ * Game Night & Craving Polls that append her choices directly into her WhatsApp RSVP.
+ * Packing Checklist she can tap and interact with.
+ * Confetti Animations on RSVP!
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Special Invitation | Sammy & Sangtris</title>
+    <title>Weekend Escape to Harties | Entle & Sangtris</title>
     <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
@@ -37,10 +48,10 @@
             z-index: 0;
             background-image: linear-gradient(
                 135deg, 
-                rgba(0, 8, 23, 0.9) 0%, 
-                rgba(0, 41, 69, 0.85) 50%, 
+                rgba(0, 8, 23, 0.88) 0%, 
+                rgba(0, 41, 69, 0.82) 50%, 
                 rgba(14, 116, 148, 0.75) 100%
-            ), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1000&auto=format&fit=crop');
+            ), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             filter: blur(8px);
@@ -53,7 +64,7 @@
             top: 16px;
             right: 16px;
             z-index: 100;
-            background: rgba(0, 41, 69, 0.75);
+            background: rgba(0, 41, 69, 0.85);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(80, 165, 178, 0.4);
             color: #50A5B2;
@@ -68,22 +79,22 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
-        /* App Container */
+        /* Main Container */
         .container {
             width: 100%;
-            max-width: 420px;
+            max-width: 430px;
             position: relative;
             z-index: 10;
         }
 
         .page {
-            background: rgba(0, 8, 23, 0.78);
+            background: rgba(0, 8, 23, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-radius: 24px;
-            padding: 28px 22px;
+            padding: 26px 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(80, 165, 178, 0.2);
+            border: 1px solid rgba(80, 165, 178, 0.25);
             transition: all 0.4s ease;
             position: relative;
         }
@@ -106,7 +117,7 @@
         /* Welcome Screen */
         .welcome-screen {
             text-align: center;
-            padding: 16px 8px;
+            padding: 12px 6px;
         }
 
         .welcome-badge {
@@ -115,7 +126,7 @@
             background: rgba(173, 105, 30, 0.2);
             border: 1px solid #AD691E;
             color: #E28E1C;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             border-radius: 20px;
             margin-bottom: 16px;
@@ -127,26 +138,27 @@
         .countdown-box {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             margin-bottom: 20px;
-            background: rgba(0, 41, 69, 0.4);
-            padding: 10px 14px;
+            background: rgba(0, 41, 69, 0.45);
+            padding: 10px 8px;
             border-radius: 16px;
-            border: 1px solid rgba(80, 165, 178, 0.2);
+            border: 1px solid rgba(80, 165, 178, 0.25);
         }
 
         .countdown-item {
             text-align: center;
+            flex: 1;
         }
 
         .countdown-number {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: #E28E1C;
         }
 
         .countdown-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #50A5B2;
             text-transform: uppercase;
             font-weight: 600;
@@ -161,7 +173,7 @@
         }
 
         .welcome-screen p {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: #50A5B2;
             font-weight: 600;
             line-height: 1.5;
@@ -179,7 +191,7 @@
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(226, 142, 28, 0.3);
+            box-shadow: 0 8px 20px rgba(226, 142, 28, 0.35);
             transition: transform 0.2s ease;
             display: flex;
             align-items: center;
@@ -191,16 +203,16 @@
             transform: scale(0.98);
         }
 
-        /* Itinerary Screen Header */
+        /* Header */
         .header {
             text-align: center;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(80, 165, 178, 0.15);
-            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(80, 165, 178, 0.2);
+            margin-bottom: 18px;
         }
 
         .header h2 {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 4px;
@@ -212,12 +224,42 @@
             font-weight: 600;
         }
 
+        /* Multi-Day Tabs */
+        .day-tabs {
+            display: flex;
+            gap: 6px;
+            background: rgba(0, 41, 69, 0.5);
+            padding: 4px;
+            border-radius: 14px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(80, 165, 178, 0.2);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 4px;
+            background: transparent;
+            border: none;
+            color: #50A5B2;
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #AD691E 0%, #E28E1C 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(226, 142, 28, 0.3);
+        }
+
         /* Timeline Items */
         .timeline {
             position: relative;
             padding-left: 18px;
             margin-bottom: 20px;
-            z-index: 10;
         }
 
         .timeline::before {
@@ -232,10 +274,10 @@
 
         .step {
             position: relative;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
             background: rgba(0, 41, 69, 0.55);
             border: 1px solid rgba(80, 165, 178, 0.2);
-            padding: 14px;
+            padding: 12px 14px;
             border-radius: 14px;
         }
 
@@ -243,7 +285,7 @@
             content: '';
             position: absolute;
             left: -24px;
-            top: 18px;
+            top: 16px;
             width: 10px;
             height: 10px;
             border-radius: 50%;
@@ -252,82 +294,141 @@
         }
 
         .time {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #E28E1C;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #f8fafc;
             margin-bottom: 4px;
         }
 
         .desc {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: #cbd5e1;
             line-height: 1.4;
         }
 
         .tag {
             display: inline-block;
-            margin-top: 8px;
-            padding: 3px 10px;
+            margin-top: 6px;
+            padding: 3px 9px;
             background: rgba(14, 116, 148, 0.25);
             color: #50A5B2;
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 600;
             border-radius: 8px;
             border: 1px solid rgba(80, 165, 178, 0.3);
         }
 
-        /* Tap to Reveal Section */
-        .reveal-section {
-            margin-bottom: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 10;
-            position: relative;
-        }
-
-        .reveal-card {
-            background: rgba(0, 41, 69, 0.35);
-            border: 1px dashed rgba(80, 165, 178, 0.3);
-            border-radius: 12px;
+        /* Packing List Section */
+        .checklist-box {
+            background: rgba(0, 41, 69, 0.4);
+            border: 1px solid rgba(80, 165, 178, 0.2);
+            border-radius: 14px;
             padding: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            margin-bottom: 18px;
         }
 
-        .reveal-title {
+        .checklist-title {
             font-size: 0.82rem;
             font-weight: 700;
             color: #E28E1C;
+            margin-bottom: 8px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+            padding: 6px 0;
+            cursor: pointer;
+            border-bottom: 1px dashed rgba(80, 165, 178, 0.15);
+        }
+
+        .check-item:last-child {
+            border-bottom: none;
+        }
+
+        .check-box {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            border: 1.5px solid #50A5B2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: transparent;
+        }
+
+        .check-item.checked .check-box {
+            background: #E28E1C;
+            border-color: #E28E1C;
+            color: #ffffff;
+        }
+
+        .check-item.checked span {
+            text-decoration: line-through;
+            color: #64748b;
+        }
+
+        /* Poll Section */
+        .poll-section {
+            margin-bottom: 18px;
+            background: rgba(0, 41, 69, 0.4);
+            border: 1px solid rgba(80, 165, 178, 0.2);
+            border-radius: 14px;
+            padding: 12px;
+        }
+
+        .poll-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #E28E1C;
+            margin-bottom: 8px;
+        }
+
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .poll-opt {
+            background: rgba(0, 8, 23, 0.6);
+            border: 1px solid rgba(80, 165, 178, 0.3);
+            color: #cbd5e1;
+            padding: 8px 10px;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: all 0.2s ease;
         }
 
-        .reveal-content {
-            font-size: 0.82rem;
-            color: #cbd5e1;
-            margin-top: 8px;
-            display: none;
-            line-height: 1.4;
+        .poll-opt.selected {
+            background: rgba(14, 116, 148, 0.4);
+            border-color: #E28E1C;
+            color: #ffffff;
         }
 
         /* RSVP Buttons */
         .rsvp-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 12px;
-            z-index: 10;
-            position: relative;
+            margin-top: 10px;
         }
 
         .rsvp-btn {
@@ -338,7 +439,7 @@
             font-weight: 700;
             font-size: 0.88rem;
             cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease;
         }
 
         .rsvp-btn:active {
@@ -362,25 +463,16 @@
             position: absolute;
             z-index: 1;
             pointer-events: none;
-            font-size: 2rem;
+            font-size: 1.8rem;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
         }
 
-        .emoji-burger {
-            top: -20px;
-            left: -10px;
-            animation: bounce-slow 4s ease-in-out infinite;
-        }
-
-        .emoji-drink {
-            bottom: 40px;
-            right: -10px;
-            animation: bounce-slow 5s ease-in-out infinite reverse;
-        }
+        .emoji-1 { top: -15px; left: -8px; animation: bounce-slow 4s ease-in-out infinite; }
+        .emoji-2 { bottom: 30px; right: -8px; animation: bounce-slow 5s ease-in-out infinite reverse; }
 
         @keyframes bounce-slow {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-18px) rotate(8deg); }
+            50% { transform: translateY(-15px) rotate(8deg); }
         }
     </style>
 </head>
@@ -399,10 +491,14 @@
         
         <!-- SCREEN 1: Welcome Invitation -->
         <div id="welcome-screen" class="page welcome-screen fade-in">
-            <span class="welcome-badge">Saturday, 12 Sept 2026</span>
+            <span class="welcome-badge">Weekend Getaway | Hartbeespoort</span>
 
             <!-- Live Countdown Timer -->
             <div class="countdown-box">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="cd-days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
                 <div class="countdown-item">
                     <div class="countdown-number" id="cd-hours">00</div>
                     <div class="countdown-label">Hours</div>
@@ -417,83 +513,150 @@
                 </div>
             </div>
 
-            <h1>A little market exploring, incredible food, and good conversation. 🍕 ✨</h1>
-            <p>Here is everything lined up for us, Sammy!</p>
+            <h1>Unplugging, scenic views, cozy nights & good vibes. 🌿 ✨</h1>
+            <p>I have our full weekend escape to Harties planned out for us, Entle!</p>
             <button class="primary-btn" onclick="openItinerary()">
-                View Date Itinerary ✨
+                Explore Weekend Plan ✨
             </button>
         </div>
 
         <!-- SCREEN 2: Main Itinerary -->
         <div id="itinerary-screen" class="page hidden">
             
-            <div class="floating-emoji emoji-burger">🍔</div>
-            <div class="floating-emoji emoji-drink">🍹</div>
+            <div class="floating-emoji emoji-1">🍷</div>
+            <div class="floating-emoji emoji-2">🌊</div>
 
             <div class="header">
-                <h2>Pretoria Date Plan</h2>
-                <p>Saturday, 12 September 2026</p>
+                <h2>Harties Escape</h2>
+                <p>Friday – Sunday Weekend Itinerary</p>
             </div>
 
-            <div class="timeline">
-                
+            <!-- Multi-Day Tabs -->
+            <div class="day-tabs">
+                <button class="tab-btn active" id="tab-fri" onclick="switchDay('fri')">Friday 🚗</button>
+                <button class="tab-btn" id="tab-sat" onclick="switchDay('sat')">Saturday 📸</button>
+                <button class="tab-btn" id="tab-sun" onclick="switchDay('sun')">Sunday 🥞</button>
+            </div>
+
+            <!-- FRIDAY SCHEDULE -->
+            <div id="day-fri" class="timeline">
                 <div class="step">
-                    <div class="time">1:30 PM</div>
-                    <div class="title">Meetup at Sammy Marks</div>
-                    <div class="desc">Rendezvous in Pretoria Central at Sammy Marks Square before requesting our ride.</div>
-                    <span class="tag">Pretoria Central</span>
+                    <div class="time">Thursday Evening</div>
+                    <div class="title">Pre-Packing Checklist 🎒</div>
+                    <div class="desc">Pack your weekend bag on Thursday night so Friday departure is smooth and stress-free!</div>
+                    <span class="tag">Pre-Trip</span>
                 </div>
 
                 <div class="step">
-                    <div class="time">1:40 PM – 2:00 PM</div>
-                    <div class="title">Transit to Market</div>
-                    <div class="desc">Catch our ride heading to the market (arriving around or just before 2:00 PM).</div>
+                    <div class="time">5:00 PM – 5:20 PM</div>
+                    <div class="title">Knock-Off & Quick Grab 🚗</div>
+                    <div class="desc">Knock off work, 20 mins to grab your bags at home, meet up and kick off the road trip!</div>
+                    <span class="tag">Pickup & Road Trip</span>
+                </div>
+
+                <div class="step">
+                    <div class="time">5:20 PM – 6:10 PM</div>
+                    <div class="title">Quick Shopping & Scenic Drive 🛒</div>
+                    <div class="desc">Stop for weekend essentials/snacks, then take the 45-minute drive down to Harties.</div>
                     <span class="tag">In Transit</span>
                 </div>
 
                 <div class="step">
-                    <div class="time">2:00 PM</div>
-                    <div class="title">Market Stalls & Sit-Down Lunch</div>
-                    <div class="desc">Explore food options, order our favorite lunch meals, and sit down to enjoy the live music.</div>
-                    <span class="tag">Market Lunch</span>
+                    <div class="time">6:15 PM Onwards</div>
+                    <div class="title">BnB Arrival & Chill Dinner 🍕</div>
+                    <div class="desc">Check into our BnB, unpack, order takeout, play music, and unwind after the week.</div>
+                    <span class="tag">Cozy Night In</span>
+                </div>
+            </div>
+
+            <!-- SATURDAY SCHEDULE -->
+            <div id="day-sat" class="timeline hidden">
+                <div class="step">
+                    <div class="time">Morning</div>
+                    <div class="title">Cozy Morning & Breakfast 🥞</div>
+                    <div class="desc">Sleep in, enjoy fresh breakfast and warm coffee at the BnB before heading out.</div>
+                    <span class="tag">Morning Vibe</span>
                 </div>
 
                 <div class="step">
-                    <div class="time">3:30 PM</div>
-                    <div class="title">Drinks, Sweet Treats & Vibes</div>
-                    <div class="desc">Grab sweet treats or cold drinks, stroll around stalls, and soak in the full atmosphere.</div>
-                    <span class="tag">Relax & Chat</span>
+                    <div class="time">Midday – Afternoon</div>
+                    <div class="title">Upside Down House & Little Paris 🗼</div>
+                    <div class="desc">Explore the famous Upside Down House, wander through Little Paris, take fun photos, and grab lunch in between!</div>
+                    <span class="tag">Sightseeing & Lunch</span>
                 </div>
 
+                <div class="step">
+                    <div class="time">Late Afternoon</div>
+                    <div class="title">Harties Dam Views & Swim 🏊‍♂️</div>
+                    <div class="desc">Head down to the dam for peaceful waterfront views, followed by a short refreshing swim at the BnB.</div>
+                    <span class="tag">Sunset & Relax</span>
+                </div>
+
+                <div class="step">
+                    <div class="time">Night</div>
+                    <div class="title">Game Night & Movie Marathon 🎲 🍿</div>
+                    <div class="desc">Dinner, board games, card games, drinks, snacks, and movies all night long!</div>
+                    <span class="tag">Game Night</span>
+                </div>
             </div>
 
-            <!-- Tap to Reveal Secret Teasers -->
-            <div class="reveal-section">
-                <div class="reveal-card" onclick="toggleReveal('dress-code')">
-                    <div class="reveal-title">
-                        <span>✨ Dress Code Hint</span>
-                        <span id="arrow-dress">▼</span>
-                    </div>
-                    <div class="reveal-content" id="dress-code">
-                        Casual, stylish, and comfortable for exploring market food stalls!
-                    </div>
+            <!-- SUNDAY SCHEDULE -->
+            <div id="day-sun" class="timeline hidden">
+                <div class="step">
+                    <div class="time">Morning</div>
+                    <div class="title">Farewell Breakfast & Checkout 🥐</div>
+                    <div class="desc">Enjoy our final breakfast together, pack up, and complete checkout.</div>
+                    <span class="tag">Checkout</span>
                 </div>
 
-                <div class="reveal-card" onclick="toggleReveal('weather')">
-                    <div class="reveal-title">
-                        <span>☀️ Pretoria Weather Outlook</span>
-                        <span id="arrow-weather">▼</span>
+                <div class="step">
+                    <div class="time">Afternoon</div>
+                    <div class="title">Scenic Drive Back Home 🚘</div>
+                    <div class="desc">Easy drive back home with great music and memories from the weekend!</div>
+                    <span class="tag">Heading Home</span>
+                </div>
+            </div>
+
+            <!-- Interactive Packing Checklist -->
+            <div class="checklist-box">
+                <div class="checklist-title">🎒 Entle's Quick Packing Essentials</div>
+                <div class="check-item" onclick="toggleCheck(this)">
+                    <div class="check-box">✓</div>
+                    <span>Cute weekend outfits & swimwear 👙</span>
+                </div>
+                <div class="check-item" onclick="toggleCheck(this)">
+                    <div class="check-box">✓</div>
+                    <span>Cozy evening sweater / hoodie 🧥</span>
+                </div>
+                <div class="check-item" onclick="toggleCheck(this)">
+                    <div class="check-box">✓</div>
+                    <span>Phone charger & toiletries 🔌</span>
+                </div>
+            </div>
+
+            <!-- Saturday Night Game Poll -->
+            <div class="poll-section">
+                <div class="poll-title">🎲 Saturday Night: What game are we starting with?</div>
+                <div class="poll-options">
+                    <div class="poll-opt" onclick="selectPoll(this, 'Uno / Card Games 🃏')">
+                        <span>Uno / Card Games</span>
+                        <span>🃏</span>
                     </div>
-                    <div class="reveal-content" id="weather">
-                        Clear skies and perfect afternoon sunshine lined up for Saturday.
+                    <div class="poll-opt" onclick="selectPoll(this, 'Movie First with Popcorn 🍿')">
+                        <span>Movie First with Popcorn</span>
+                        <span>🍿</span>
+                    </div>
+                    <div class="poll-opt" onclick="selectPoll(this, 'Board Games & Drinks 🍷')">
+                        <span>Board Games & Drinks</span>
+                        <span>🍷</span>
                     </div>
                 </div>
             </div>
 
             <!-- RSVP Action Buttons -->
             <div class="rsvp-group">
-                <button class="rsvp-btn btn-in" onclick="rsvpAction('Count me in!')">Count Me In! 🥂</button>
-                <button class="rsvp-btn btn-wait" onclick="rsvpAction('Can\'t wait!')">Can't Wait! 🍕</button>
+                <button class="rsvp-btn btn-in" onclick="rsvpAction('Count me in!')">Ready for Harties! 🥂</button>
+                <button class="rsvp-btn btn-wait" onclick="rsvpAction('Can\'t wait!')">Can't Wait! 🚗</button>
             </div>
 
         </div>
@@ -501,31 +664,46 @@
     </div>
 
     <script>
+        let selectedGame = '';
+
         // Transition Screen Logic
         function openItinerary() {
-            const welcome = document.getElementById('welcome-screen');
+            document.getElementById('welcome-screen').classList.add('hidden');
             const itinerary = document.getElementById('itinerary-screen');
-
-            welcome.classList.add('hidden');
             itinerary.classList.remove('hidden');
             itinerary.classList.add('fade-in');
         }
 
-        // Live Countdown to Saturday 1:30 PM
+        // Switch Day Tabs
+        function switchDay(day) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.timeline').forEach(t => t.classList.add('hidden'));
+
+            document.getElementById(`tab-${day}`).classList.add('active');
+            const target = document.getElementById(`day-${day}`);
+            target.classList.remove('hidden');
+            target.classList.add('fade-in');
+        }
+
+        // Live Countdown to Upcoming Friday at 5:00 PM SAST
         function updateCountdown() {
-            const targetDate = new Date('September 12, 2026 13:30:00').getTime();
+            // Adjust year/date dynamically or hardcode target Friday (e.g. 2026-09-25T17:00:00+02:00)
+            const targetDate = new Date('2026-09-25T17:00:00+02:00').getTime();
             const now = new Date().getTime();
             const difference = targetDate - now;
 
             if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
+                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
                 document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
                 document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
                 document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
             } else {
+                document.getElementById('cd-days').innerText = '00';
                 document.getElementById('cd-hours').innerText = '00';
                 document.getElementById('cd-mins').innerText = '00';
                 document.getElementById('cd-secs').innerText = '00';
@@ -534,11 +712,16 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Tap-to-Reveal Logic
-        function toggleReveal(id) {
-            const content = document.getElementById(id);
-            const isHidden = content.style.display === '' || content.style.display === 'none';
-            content.style.display = isHidden ? 'block' : 'none';
+        // Checkbox Toggle
+        function toggleCheck(el) {
+            el.classList.toggle('checked');
+        }
+
+        // Game Poll Selection
+        function selectPoll(element, choice) {
+            document.querySelectorAll('.poll-opt').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedGame = choice;
         }
 
         // Audio Toggle
@@ -561,13 +744,15 @@
         // Confetti RSVP Action
         function rsvpAction(response) {
             confetti({
-                particleCount: 100,
-                spread: 70,
+                particleCount: 130,
+                spread: 85,
                 origin: { y: 0.6 }
             });
 
+            let gameMsg = selectedGame ? ` (For Saturday game night, let's start with ${selectedGame}!)` : '';
+
             setTimeout(() => {
-                const text = encodeURIComponent(`Hey! ${response} I just checked out the itinerary for tomorrow! ✨`);
+                const text = encodeURIComponent(`Hey! ${response}${gameMsg} I just went through our Harties weekend plan! 🌿✨`);
                 window.open(`https://wa.me/27671908964?text=${text}`, '_blank');
             }, 800);
         }
